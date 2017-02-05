@@ -11,7 +11,7 @@ usage = "Example: bruteKey.py -H <target> -u <user name> -d <directory> "
 
 def banner():
 	print "##### SSH Weak Key Exploit  #######"
-	usage
+	print usage
 	print""
 
 def connect(user, host, keyfile, release):
