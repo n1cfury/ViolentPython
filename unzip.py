@@ -1,7 +1,4 @@
-#Violent Python p 25-29
-
-#TODO: Add a shebang, DEBUG AND FINAL TEST
-
+#!/usr/bin/env python
 import zipfile, optparse
 from threading import Thread
 
