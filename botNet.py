@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 import optparse, pxssh
-
-usage = "botNet.py"
+Usage = 'JUST RUN THE DAMN SCRIPT'
 
 def banner():
 	print "#####   SSH BotNet    #######"
-	print "Usage = 'JUST RUN THE DAMN SCRIPT'"
+	print usage
 
 class Client:
 	def__init__(self, host, user, password):
