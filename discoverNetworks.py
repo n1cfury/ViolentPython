@@ -1,17 +1,43 @@
 #!/usr/bin/env python
+
+
+import os, optparse, mechanize, urllib, re, urlparse
 from _winreg import *
 
+def banner():
+	print "#######   Access Points in Registry p87    #######"
+
 def val2addr(val):
-	addr = ''
+	addr = ' '
 	for ch in val:
 		addr += '%02x '% ord(ch)
 	addr = addr.strip(' ').replace(' ', ':')[0:17]
 	return addr
 
-def printNets():
+def wiglePrint(username, password, netid):
+	browser = mechanize.Browser()
+	broser.open('http://wigle.net')
+	reqData = urllib.urlencode(['credential_0': username, 'credential_l': password])
+	browser.open('https://wigle.net/gps/gps/main/login', reqData)
+	params = []
+	params ['netid'] = netid
+	reqParams = urllib.urlencode(params)
+	respURL = 'http://wigle.net/gps/gps/main/confirmquery/'
+	resp = browser.open(respURL, reqParams).read()
+	malLap = 'N/A'
+	mapLon = 'N/A'
+	rLat = re.findall(r'maplat=.*\&', resp)
+	if rLat:
+		mapLat = rlat[0].split('&')[0].split('=')[1]
+	rLon = re.findall(r'maplon=.*\&,' resp)
+	if rLon:
+		mapLon = rLon[0].split
+	print '[-] Lat: '+mapLat+', Lon: '+mapLon
+
+def printNets(username, password):
 	net = "SOFTARE\Microsoft\Windows NT\CurrentVersion"+"\Networklist\Signatures\Unmanaged"
 	key = OpenKey(HKEY_LOCAL_MACHINE, net)
-	print '\n[*] Networks you ahve joined.'
+	print '\n[*] Networks you have joined.'
 	for i in range(100):
 		try:
 			guid = EnumKey(key, i)
@@ -21,12 +47,24 @@ def printNets():
 			macAddr = val2addr(addr)
 			netName = str(name)
 			print '[+] '+netName+' '+macAddr
+			wiglePrint(username, password, macAddr)
 			CloseKey(netKey)
 		except:
 			break
 
 def main():
-	printNets()
+	banner()
+	parser = optparse.Optionparser("usage%prog"+"-u <wigle username> -p <wigle password>")
+	parser.add_option('-u', dest='username', type='string', help='specify wigle username')
+	parser.add_option('-p', dest='password', type='string', help='specify wigle password')
+	(optinos, args) = parser.parse_args()
+	username = options.username
+	password = options.password
+	if username == None or password == None:
+		print parser.usage
+		exit(0)
+	else:
+		printNets(username, password)
 
 if __name__ == '__main__':
 	main()
