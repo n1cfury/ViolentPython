@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 import crypt
 
 def banner():
@@ -27,10 +26,7 @@ def main():
 			user = line.split(':')[0]
 			cryptPass = line.split(':')[1].strip(' ')
 			print "[*] Cracking Password for: "+user
-			testPass(cryptPass)
-			
-#		else:
-#			print usage
+			testPass(cryptPass)	
 
 if __name__ == "__main__":
 	main()
