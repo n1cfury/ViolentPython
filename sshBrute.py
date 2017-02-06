@@ -1,9 +1,8 @@
 #!/usr/bin/env python
-usage = "Example:  sshBrute.py -H <target> -u <user name> -F <password file>"
-
-import pxssh, optparse, time
+import pxssh, optparse, time 
 from threading import *
 
+usage = "Example:  sshBrute.py -H <target> -u <user name> -F <password file>"
 maxConnections= 5
 connection_lock = BoundedSemaphore(value=maxConnections)
 Found = False
@@ -11,11 +10,10 @@ Fails = 0
 
 def banner():
 	print "#######  SSH Brute Force p46-48 #########"
-	usage
+	print usage
 
 def connect(host, user, password, release):
-	global Found
-	global Fails
+	global Found, Fails
 	try:
 		s = pxssh.pxssh()
 		s.login(host, user, password)
