@@ -1,6 +1,8 @@
-#p 59
-
+#!/usr/bin/env python
 import ftplib
+
+def banner():
+	print "#### Find Webpages on FTP Server p59 ######"
 
 def returnDefault(ftp):
 	try:
@@ -21,7 +23,7 @@ def returnDefault(ftp):
 host = '192.168.95.179'
 userName = 'guest'
 passWord = 'guest'
-ftp = ftplib.FTP9host)
+ftp = ftplib.FTP9host()
 
 ftp.login(userName, passWord)
 returnDefault(ftp)
