@@ -1,8 +1,6 @@
-#Port Scanner, p 38
-
+#!/usr/bin/env python
 import optparse
-from socket import *
-from threading import *
+from socket, threading import *
 
 screenLock = Semaphore(value=1)
 
@@ -55,20 +53,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
