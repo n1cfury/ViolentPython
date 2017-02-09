@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-
-
 import os, optparse, mechanize, urllib, re, urlparse
 from _winreg import *
 
