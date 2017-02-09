@@ -31,8 +31,28 @@ def printContacts(skypeDB):
 		print '[+] User 	: '+str(row[0])
 
 def printCallLog(skypeDB):
+	conn - sqlite3.connect(skypeDB)
+	c - conn.curser()
+	c.execute('SELECT datetiem(begin_timestamp, 'unixepoch', identity FROM calls, conversations WHERE calls.conv_dbid=conversations.id;")
+	print '\n[*] --Found Calls--'
+	for row in c:
+		print '[+] Time: '+str(row[0])+' | Partner: '+str(row[1])
 
 def printMessages(skypeDB):
+	conn = sqlite3.connect(skypeDB)
+	c = conn.cursor()
+	c.execute("SELECT datetime(timestamp, 'unixepoch'), dialog_partner, author, body_xml FROM Messages;")
+	print '\n[*] --Found Messages--'
+	for row in c:
+		try:
+			if 'partlist' not in str(row[3]):
+				if str(row[1]) != str(row[2]):
+					msgDirection = 'To'+str(row[1])+': '
+				else:
+					msgDirection = 'From'+str(row[2])+': '
+				print 'Time: '+str(row[3])
+		except:
+			pass
 
 def main():
 	parser = optparse.OptionParser('usage%prog '+'-p <Skype Profile Path>')
