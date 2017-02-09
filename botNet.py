@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import optparse, pxssh
 Usage = 'JUST RUN THE DAMN SCRIPT'
-
+#Try looking through the notes to see if anything is missing.
 def banner():
 	print "#####   SSH BotNet    #######"
 	print usage
