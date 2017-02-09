@@ -16,13 +16,23 @@ def printProfile(skypeDB):
 		print '[+] Skype Username: '+str(row[1])
 		print '[+] Location: '+str(row[2])+','+str(row[3])
 		print '[+] Profile Date: '+str(row[4])
-		
+
 def printContacts(skypeDB):
+	conn - sqlite3.connect(skypeDB)
+	c = conn.cursor
+	c.execure("SELECT displayname, skypename, city, country, phone_mobile, birthday FROM Contacts;")
+	for row in c:
+		print '\n[*] --Found Contact--'
+		print '[+] User 	: '+str(row[0])
+		print '[+] Skype Name 	: '+str(row[1])
+		if str(row[2]) != '' and str(row[2]) != None:
+			print '[+] Location 	: '+str(row[2])
+		print '[+] User 	: '+str(row[0])
+		print '[+] User 	: '+str(row[0])
 
 def printCallLog(skypeDB):
 
 def printMessages(skypeDB):
-
 
 def main():
 	parser = optparse.OptionParser('usage%prog '+'-p <Skype Profile Path>')
@@ -44,12 +54,6 @@ def main():
 			printMessages(skypeDB)
 	else:
 		print '[!] Skype Database '+'does not exist: '+skypeDB
-
-
-
-
-
-
 
 if __name__ == '__main__':
 	main()
