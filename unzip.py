@@ -3,7 +3,7 @@ import zipfile, optparse
 from threading import Thread
 
 def banner():
-	print "##### Zip Cracker; p 25-29 #####"
+	print "##### Zip Cracker; p 29 #####"
 	print ""
 
 def extractFile(zFile, password):
