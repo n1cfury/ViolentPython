@@ -7,7 +7,6 @@ def banner():
 	print "####   MassCompromise p 62-65     #####"
 	print "	 This combines previous programs      "
 	print "	 in the chapter.  Check for errors    "
-	print "	 and excercise caution when copying   "
 
 def anonLogin(hostname):
 	try:
