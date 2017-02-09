@@ -41,7 +41,7 @@ def portScan(tgtHost, tgtPort):
 		t.start()
 
 def main():
-	parser = optparse.OptionParser('useage%prog '+"-H <target hsot> -p <target port>")
+	parser = optparse.OptionParser('usage%prog '+"-H <target host> -p <target port>")
 	parser.add_option("-P, dest="tgtPort", type ="string", help = "specify target port[s] separated by comma"")
 	(options, args) = parser.parse_args()
 	tgtHost = options.tgtHost
