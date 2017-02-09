@@ -12,6 +12,7 @@ def nmapScan(tgtHost, tgtPort):
 	print ' [*] '+tgtHost+' tcp/'+tgtPort+' '+state
 
 def main():
+	banner()
 	parser = optparse.OptionParser('usage%prog '+'-H <target host> -p <target port>')
 	parser.add_option('-H', dest='tgtHost', type ='string', help='specify target host')
 	parser.add_option('-p', dest='tgtHost', type ='string', help ='specify target port[s] separated by comma')
