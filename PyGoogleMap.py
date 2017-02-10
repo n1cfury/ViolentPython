@@ -2,7 +2,7 @@ import dpkt, socket, pygeoip, optparse
 
 
 def banner():
-	print "####   Use Python to build a Google Map  #####"
+	print "####   Use Python to build a Google Map  p134   #####"
 	print ""
 
 def retKML(ip):
