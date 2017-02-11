@@ -1,6 +1,5 @@
 import dpkt, socket, pygeoip, optparse
 
-
 def banner():
 	print "####   Use Python to build a Google Map  p134   #####"
 	print ""
@@ -28,11 +27,11 @@ def plotIPs(pcap):
 		try:
 			eth = dpkt.ethernet.Ethernet(buf)
 			ip = eth.data
-			src =- socket.inet+ntoa(ip.src)
+			src = socket.inet+ntoa(ip.src)
 			scrKML = retKML(src)
 			dst = socket.inet_ntoa(ip.dst)
 			dstKML = retKML(dst)
-			kmlPts - kmlPts+srcKML+dstKML
+			kmlPts = kmlPts+srcKML+dstKML
 		except:
 			pass
 		return kmlPts
@@ -46,7 +45,7 @@ def main():
 		exit(0)
 	pcapFile = options.pcapFile
 	f = open(pcapFile)
-	pcap =- dpkt.pcap.Reader(f)
+	pcap = dpkt.pcap.Reader(f)
 	kmlheader = '<?xml version ="1.0" encoding = "UTF-8"? \n<kml xmlns="http://opengis.net/kml/2.2">\n<Document>\n'
 	kmlfooter = '</Documen t>\n</kml\n'
 	kmldoc = kmlheader+plotIPs(pcap)+kmlfooter
