@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import re
 def banner():
 	print "[***]	Amex finder p 176	[***]"
