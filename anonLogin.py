@@ -3,7 +3,7 @@ import ftplib, sys
 hostname = sys.argv[1]
 
 def banner():
-	print "#####  Anonymous FTP Scanner  p57 #######"
+	print "[***]	Anonymous FTP Scanner  p57	[***]"
 
 def anonLogin(hostname):
 	try:
