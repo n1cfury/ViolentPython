@@ -2,10 +2,7 @@
 import crypt
 
 def banner():
-	print "######################################"
-	print "#  vP Password Cracker by: n1cfury   #"
-	print "######################################"
-	print ""
+	print "[***]	Password Cracker p22	[***]"
 
 def testPass(cryptPass):
 	salt = cryptPass[0:2]
