@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import time, optparse
 from scapy.all import *
 from IPy import IP as IPTEST
@@ -5,7 +6,7 @@ ttlValues= {}
 THRESH = 5
 
 def banner():
-	print "####    Spoof Detecter p148    #####"
+	print "[***]	Spoof Detecter p148		[***]"
 
 def checkTTL(ipsrc, ttl):
 	if IPTEST(ipsrc).iptype() == 'PRIVATE':
