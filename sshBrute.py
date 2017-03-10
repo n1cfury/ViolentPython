@@ -9,7 +9,7 @@ Found = False
 Fails = 0
 
 def banner():
-	print "#######  SSH Brute Force p46-48 #########"
+	print "[***]	SSH Brute Force p48		[***]"
 	print usage
 
 def connect(host, user, password, release):
@@ -31,6 +31,7 @@ def connect(host, user, password, release):
 			if release: connection_lock.release()
 
 def main():
+	banner()
 	parser = optparse.OptionParser('usage%prog '+ '-H <target host> -u <user> -F <password list>')
 	parser.add_option('-H', dest='tgtHost', type='string', help='specify target host')
 	parser.add_option('-F', dest='passwdFile', type='string', help='specify password file')
