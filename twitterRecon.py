@@ -1,7 +1,7 @@
 
 
 def banner():
-	print "[***]	Mirroring images p226	[***]"
+	print "[***]	Mirroring images p227	[***]"
 
 class reconPerson():
 
