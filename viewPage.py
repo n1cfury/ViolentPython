@@ -1,7 +1,7 @@
 
 
 def banner():
-	print "### Page Viewer p213 ###"
+	print "[***]	Page Viewer p213	[***]"
 
 def viewPage(url):
 
