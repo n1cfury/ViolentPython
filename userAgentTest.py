@@ -1,7 +1,7 @@
 
 
 def banner():
-	print "### Proxy p215 ###"
+	print "[***]	Proxy p215		[***]"
 
 def testUserAgent(url, userAgent):
 
