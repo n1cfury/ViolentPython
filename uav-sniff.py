@@ -2,7 +2,7 @@
 
 
 def banner():
-	print "####   Drone Sniffer p195   #####"
+	print "[***]	Drone Sniffer p195	[***]"
 
 
 class interceptThread(threading, Thread):
